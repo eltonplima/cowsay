@@ -12,7 +12,7 @@ defmodule CowSay.CLI do
   end
 
   defp draw_header do
-    IO.puts(" ________________________________________")
+    IO.puts(" " <> duplicate("_", 40))
     IO.puts("/ You have Egyptian flu: you're going to \\")
     IO.puts("\\ be a mummy.                            /")
     IO.puts("----------------------------------------")
@@ -24,5 +24,9 @@ defmodule CowSay.CLI do
     IO.puts("    (__)\\       )\\/\\")
     IO.puts("         ||----w |")
     IO.puts("         ||     ||")
+  end
+
+  defp duplicate(char, times \\ 1) do
+    String.duplicate(char, times)
   end
 end
