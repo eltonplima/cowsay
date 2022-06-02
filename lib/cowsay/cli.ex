@@ -14,8 +14,8 @@ defmodule CowSay.CLI do
 
   defp draw_header do
     IO.puts(draw_line(40, " ", type: :underscore))
-    IO.puts("/ You have Egyptian flu: you're going to \\")
-    IO.puts("\\ be a mummy.                            /")
+    IO.puts(write("You have Egyptian flu: you're going to", "/ ", " \\"))
+    IO.puts(write("be a mummy.", "\\ ", "                            /"))
     IO.puts(draw_line(40, " ", type: :hyphen))
   end
 
@@ -45,5 +45,23 @@ defmodule CowSay.CLI do
 
   defp draw_line(line_char, length, prepend) do
     prepend <> duplicate(line_char, length)
+  end
+
+  defp write(text, prepend \\ nil, append \\ nil)
+
+  defp write(text, nil, nil) do
+    text
+  end
+
+  defp write(text, prepend, nil) do
+    prepend <> text
+  end
+
+  defp write(text, nil, append) do
+    text <> append
+  end
+
+  defp write(text, prepend, append) do
+    prepend <> text <> append
   end
 end
